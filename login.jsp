@@ -1,6 +1,5 @@
 <%@ page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,18 +7,28 @@
     <title>教务管理系统</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #e0f7fa, #80deea);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
             padding: 0;
         }
         .header {
-            background-color: #007bff;
-            color: #fff;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
             padding: 10px 20px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 20px;
+            width: calc(100% - 40px);
+            max-width: 1200px;
         }
         .header img {
             height: 50px;
@@ -27,26 +36,20 @@
         .header #xtmc {
             font-size: 24px;
             margin-left: 10px;
+            font-weight: bold;
         }
         .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: calc(100vh - 80px);
-            flex-wrap: wrap;
-            padding: 20px;
-        }
-        .login-container {
-            width: 400px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             padding: 40px;
-            margin: 10px;
-        }
-        .login-container h2 {
+            width: 100%;
+            max-width: 400px;
             text-align: center;
+        }
+        .container h2 {
             margin-bottom: 20px;
+            color: #333;
         }
         .login-form input[type="text"],
         .login-form input[type="password"],
@@ -57,16 +60,23 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             box-sizing: border-box;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .login-form input[type="text"]:focus,
+        .login-form input[type="password"]:focus {
+            border-color: #80deea;
+            box-shadow: 0 0 8px rgba(128, 222, 234, 0.2);
         }
         .login-form input[type="submit"] {
-            background-color: #007bff;
+            background-color: #80deea;
             border: none;
             color: #fff;
             cursor: pointer;
             transition: background-color 0.3s;
         }
         .login-form input[type="submit"]:hover {
-            background-color: #0056b3;
+            background-color: #4dd0e1;
         }
         .error-message {
             color: red;
@@ -74,25 +84,12 @@
             text-align: center;
         }
         .login-image {
-            flex: 1;
-            text-align: center;
-            margin: 10px;
+            margin-bottom: 20px;
         }
         .login-image img {
             max-width: 100%;
             height: auto;
-        }
-        .register-link {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .register-link a {
-            color: #007bff;
-            text-decoration: none;
-            margin: 0 5px;
-        }
-        .register-link a:hover {
-            text-decoration: underline;
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -101,30 +98,29 @@
     String imageUrl = "/IMG/pic1.jpg"; // 设置图片的URL
 %>
 <div class="header">
-    <div class="logo_1">
-        <img src="/IMG/logo_jw_d.png" alt="学校Logo">
-        <span id="xtmc">浙江工业大学正方教务管理系统</span>
-    </div>
+    <img src="/IMG/logo_jw_d.png" alt="学校Logo">
+    <span id="xtmc">浙江工业大学正方教务管理系统</span>
 </div>
 <div class="container">
     <div class="login-image">
         <img src="<%=imageUrl%>" alt="登录图片">
     </div>
-    <div class="login-container">
-        <h2>教务管理系统</h2>
-<%--        &lt;%&ndash; 显示错误信息 &ndash;%&gt;--%>
-<%--        <c:if test="${not empty sessionScope.message}">--%>
-<%--            <div class="error-message">${sessionScope.message}</div>--%>
-<%--        </c:if>--%>
-        <form class="login-form" action="<%=request.getContextPath()%>/loginChangeServlet" method="post">
-            <input type="hidden" name="token" value="<%=new Date().getTime()%>"/>
-            <input type="text" name="username" placeholder="请输入账号" required />
-            <input type="password" name="password" placeholder="请输入密码" required/>
-            <input type="submit" name="submit" value="登录" />
-        </form>
-        <div class="register-link">
-            <a href="findpassword.jsp">忘记密码？</a> | <a href="register.jsp">立即注册</a>
-        </div>
+    <h2>教务管理系统</h2>
+    <form class="login-form" action="<%=request.getContextPath()%>/loginChangeServlet" method="post">
+        <input type="hidden" name="token" value="<%=new Date().getTime()%>"/>
+        <input type="text" name="username" placeholder="请输入账号" required />
+        <input type="password" name="password" placeholder="请输入密码" required/>
+        <input type="submit" name="submit" value="登录" />
+    </form>
+    <div class="error-message">
+        <%
+            // 如果有错误消息，显示错误消息
+            String message = (String) session.getAttribute("message");
+            if (message != null) {
+                out.print(message);
+                session.removeAttribute("message");
+            }
+        %>
     </div>
 </div>
 </body>

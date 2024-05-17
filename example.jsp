@@ -1,5 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%--<%@ taglib prefix="c" uri="http://xmlns.jcp.org/jsp/jstl/core" %>--%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,6 +29,28 @@
         .container {
             padding: 20px;
         }
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #007bff;
+            margin-bottom: 20px;
+        }
+        .tabs a {
+            padding: 10px 20px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #007bff;
+            border-bottom: 2px solid transparent;
+        }
+        .tabs a.active {
+            border-bottom: 2px solid #007bff;
+            font-weight: bold;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
         .info-table {
             width: 100%;
             border-collapse: collapse;
@@ -47,6 +68,24 @@
             margin-bottom: 20px;
         }
     </style>
+    <script>
+        function showSection(sectionId) {
+            var sections = document.querySelectorAll('.content-section');
+            var tabs = document.querySelectorAll('.tabs a');
+            sections.forEach(function(section) {
+                section.classList.remove('active');
+            });
+            tabs.forEach(function(tab) {
+                tab.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+            document.querySelector('.tabs a[href="#' + sectionId + '"]').classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('basic-info'); // 默认显示基础信息
+        });
+    </script>
 </head>
 <body>
 <div class="header">
@@ -56,77 +95,98 @@
     </div>
 </div>
 <div class="container">
-    <div class="info-section">
-        <h2>基本信息</h2>
+    <div class="tabs">
+        <a href="#basic-info" class="active" onclick="showSection('basic-info'); return false;">基础信息</a>
+        <a href="#admission-info" onclick="showSection('admission-info'); return false;">入学信息</a>
+        <a href="#extended-info" onclick="showSection('extended-info'); return false;">扩展信息</a>
+    </div>
+    <div id="basic-info" class="content-section active">
+        <h2>基础信息</h2>
         <table class="info-table">
             <tr>
                 <th>学号</th>
-                <td>${user.studentId}</td>
+                <td>${user.studentID}</td>
                 <th>姓名</th>
                 <td>${user.name}</td>
+                <th>姓名拼音</th>
+                <td>${user.namePY}</td>
             </tr>
             <tr>
                 <th>性别</th>
                 <td>${user.gender}</td>
-                <th>姓名拼音</th>
-                <td>${user.pinYin}</td>
+                <th>民族</th>
+                <td>${user.nation}</td>
+                <th>出生日期</th>
+                <td><fmt:formatDate value="${user.birthDate}" pattern="yyyy-MM-dd"/></td>
             </tr>
             <tr>
                 <th>籍贯</th>
-                <td>${user.ethnicGroup}</td>
-                <th>出生日期</th>
-                <td>${user.birthDate}</td>
-            </tr>
-            <tr>
+                <td>${user.nativePlace}</td>
+                <th>政治面貌</th>
+                <td>${user.politicalStatus}</td>
                 <th>证件号码</th>
-                <td>${user.idNumber}</td>
-                <th>证件类型</th>
-                <td>${user.idType}</td>
+                <td>${user.IDNumber}</td>
             </tr>
             <tr>
-                <th>出生地</th>
-                <td>${user.birthPlace}</td>
+                <th>证件类型</th>
+                <td>${user.IDType}</td>
                 <th>婚姻状况</th>
                 <td>${user.maritalStatus}</td>
+                <th>生源地</th>
+                <td>${user.birthPlace}</td>
             </tr>
             <tr>
                 <th>家庭地址</th>
-                <td>${user.address}</td>
-                <th>生源地</th>
-                <td>${user.birthRegion}</td>
-            </tr>
-            <tr>
+                <td>${user.familyAddress}</td>
                 <th>户口所在地详细地址</th>
-                <td>${user.domicileAddress}</td>
-                <th>户口所在地</th>
-                <td>${user.domicileRegion}</td>
+                <td>${user.huKouDetailedPlace}</td>
+                <th>火车起点站</th>
+                <td>${user.railwayStationStart}</td>
             </tr>
             <tr>
-                <th>火车起点站</th>
-                <td>${user.trainOrigin}</td>
+                <th>户口所在地</th>
+                <td>${user.huKouPlace}</td>
                 <th>户口所在地邮编</th>
-                <td>${user.domicileZipCode}</td>
+                <td>${user.huKouPostalCode}</td>
+                <th>火车终点站</th>
+                <td>${user.railwayStationEnd}</td>
             </tr>
             <tr>
                 <th>校内电子邮箱</th>
-                <td>${user.schoolEmail}</td>
+                <td>${user.campusEmail}</td>
+                <th>宿舍号</th>
+                <td>${user.personalEmail}</td>
                 <th>手机号码</th>
                 <td>${user.phoneNumber}</td>
             </tr>
             <tr>
-                <th>学生标签</th>
-                <td>${user.studentTag}</td>
                 <th>入党日期</th>
-                <td>${user.partyDate}</td>
+                <td><fmt:formatDate value="${user.joinPartyDate}" pattern="yyyy-MM-dd"/></td>
             </tr>
+        </table>
+    </div>
+    <div id="admission-info" class="content-section">
+        <h2>入学信息</h2>
+        <table class="info-table">
             <tr>
-                <th>奖励情况</th>
-                <td colspan="3">${user.awards}</td>
+                <th>入学日期</th>
+                <td><fmt:formatDate value="${user.entranceDate}" pattern="yyyy-MM-dd"/></td>
+                <th>入学方式</th>
+                <td>${user.entranceMethod}</td>
             </tr>
+            <!-- 其他入学信息字段 -->
+        </table>
+    </div>
+    <div id="extended-info" class="content-section">
+        <h2>扩展信息</h2>
+        <table class="info-table">
             <tr>
-                <th>政治面貌</th>
-                <td colspan="3">${user.politicalStatus}</td>
+                <th>兴趣爱好</th>
+                <td>${user.hobbies}</td>
+                <th>特长</th>
+                <td>${user.specialties}</td>
             </tr>
+            <!-- 其他扩展信息字段 -->
         </table>
     </div>
 </div>
