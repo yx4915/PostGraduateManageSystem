@@ -337,22 +337,22 @@
                 <td>${user.wxID}</td>
                 <th>QQ</th>
                 <td>${user.qqID}</td>
-            </tr>
-            <tr>
                 <th>联系电话</th>
                 <td>${user.phone}</td>
-                <th>邮政编码</th>
-                <td>${user.postCode}</td>
             </tr>
             <tr>
                 <th>通讯地址</th>
                 <td colspan="3">${user.address}</td>
+                <th>邮政编码</th>
+                <td>${user.postCode}</td>
             </tr>
             <tr>
                 <th>现就学习或工作单位</th>
                 <td>${user.studyUnit}</td>
                 <th>单位电话</th>
                 <td>${user.unitPhone}</td>
+                <th>单位邮编</th>
+                <td>${user.unitPostCode}</td>
             </tr>
             <tr>
                 <th>现就学习或工作单位地址</th>
@@ -363,6 +363,8 @@
                 <td>${user.emergencyContact}</td>
                 <th>紧急电话</th>
                 <td>${user.emergencyPhone}</td>
+                <th>紧急联系人邮政编码</th>
+                <td>${user.emergencyPostCode}</td>
             </tr>
             <tr>
                 <th>紧急联系人住址</th>
@@ -373,15 +375,13 @@
                 <td>${user.dormitoryAddress}</td>
                 <th>宿舍电话</th>
                 <td>${user.dormitoryPhone}</td>
-            </tr>
-            <tr>
                 <th>专业技术职务</th>
                 <td>${user.technicalPosition}</td>
-                <th>行政职务级别</th>
-                <td>${user.administrativePositionLevel}</td>
             </tr>
             <tr>
-                <th>家庭地址</th>
+                <th>行政职务级别</th>
+                <td>${user.administrativePositionLevel}</td>
+                <th>家庭所在地</th>
                 <td>${user.familyAddress}</td>
                 <th>家庭邮政编码</th>
                 <td>${user.familyPostCode}</td>
@@ -394,8 +394,6 @@
             </tr>
         </table>
 
-
-<%--    <div id="work-experience" class="content-section">--%>
         <h2>工作经历</h2>
         <table class="info-table">
             <thead>
@@ -448,7 +446,7 @@
                 <td>${user.endTime}</td>
                 <td>${user.major}</td>
                 <td>${user.majorDescription}</td>
-                <td>${user.degree}</td>
+                <td>${user.finalEducation}</td>
                 <td>${user.degreeType}</td>
                 <td>${user.graduatePosition}</td>
                 <td>${user.restTime}</td>
