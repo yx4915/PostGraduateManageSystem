@@ -256,31 +256,31 @@
                 <th>招生年度</th>
                 <td>${user.enrollmentYear}</td>
                 <th>考生编号</th>
-                <td>${user.examID}</td>
+                <td>${user.candidateID}</td>
                 <th>报考类别</th>
-                <td>${user.examType}</td>
+                <td>${user. applicationCategory}</td>
             </tr>
             <tr>
                 <th>考生来源</th>
-                <td>${user.source}</td>
+                <td>${user.candidateSource}</td>
                 <th>录取类别</th>
                 <td>${user.admissionCategory}</td>
                 <th>考试方式</th>
-                <td>${user.examMethod}</td>
+                <td>${user.examinationMethods}</td>
             </tr>
             <tr>
                 <th>是否保送</th>
-                <td>${user.isGuaranteed}</td>
+                <td>${user.returnStatus}</td>
                 <th>保留入学资格年限</th>
-                <td>${user.reservedYears}</td>
-                <th>定向委培单位</th>
-                <td>${user.sponsoringUnit}</td>
+                <td>${user.retentionQualificationYears}</td>
+                <th>定向委培单位所在地</th>
+                <td>${user.targetedTrainingUnitsPlace}</td>
             </tr>
             <tr>
-                <th>入学日期</th>
-                <td><"${user.entranceDate}/></td>
-                <th>入学方式</th>
-                <td>${user.entranceMethod}</td>
+                <th>定向委培单位</th>
+                <td><"${user.targetedTrainingUnits}/></td>
+                <th>推免单位</th>
+                <td>${user.recommendedUnit}</td>
             </tr>
             <!-- 其他入学信息字段 -->
         </table>
@@ -289,33 +289,43 @@
         <table class="info-table">
             <tr>
                 <th>最后毕业学校</th>
-                <td>${user.lastSchool}</td>
-                <th>最后毕业专业</th>
-                <td>${user.lastMajor}</td>
+                <td>${user.finalGraduationSchool}</td>
                 <th>最后毕业学校名称</th>
-                <td>${user.lastSchoolName}</td>
+                <td>${user.finalGraduationSchoolName}</td>
             </tr>
             <tr>
-                <th>最后学历名称</th>
-                <td>${user.lastDegree}</td>
-                <th>最后学位单位</th>
+                <th>最后毕业专业</th>
+                <td>${user.finalGraduationMajor}</td>
+                <th>最后毕业专业名称</th>
+                <td>${user.finalGraduationMajorName}</td>
+                <th>最后学历单位</th>
                 <td>${user.lastDegreeUnit}</td>
+            </tr>
+            <tr>
+                <th>最后学位单位名称</th>
+                <td>${user. finalGraduationSchoolName}</td>
+                <th>最后学位专业</th>
+                <td>${user.finalGraduationMajor}</td>
                 <th>最后学历专业名称</th>
-                <td>${user.lastDegreeMajor}</td>
+                <td>${user.finalGraduationMajorName}</td>
             </tr>
             <tr>
                 <th>最后毕业证书编号</th>
-                <td>${user.lastDiplomaID}</td>
-                <th>最后学位</th>
-                <td>${user.lastDegreeTitle}</td>
-                <th>最后毕业时间</th>
-                <td><"${user.lastGraduationDate}"/></td>
+                <td>${user.finalGraduationCertificateNumber}</td>
+                <th>最后学历</th>
+                <td>${user.finalEducation}</td>
             </tr>
             <tr>
-                <th>最后学历</th>
-                <td>${user.lastEducation}</td>
+                <th>最后学位</th>
+                <td>${user.finalDegree}</td>
+                <th>最后毕业时间</th>
+                <td><"${user.finalGraduationDate}"/></td>
+                <th>最后学位时间</th>
+                <td><"${user.finalDegreeDate}"/></td>
+            </tr>
+            <tr>
                 <th>最后学历学习形式</th>
-                <td>${user.lastEducationForm}</td>
+                <td>${user.finalAcademicLearningForm}</td>
             </tr>
         </table>
     </div>
