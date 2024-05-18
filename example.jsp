@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,7 +91,7 @@
 <body>
 <div class="header">
     <div class="logo_1">
-        <img src="/img/logo_jw_d.png" alt="学校Logo">
+        <img src="/IMG/logo_jw_d.png" alt="学校Logo">
         <span id="xtmc">浙江工业大学正方教务管理系统</span>
     </div>
 </div>
@@ -117,7 +118,7 @@
                 <th>民族</th>
                 <td>${user.nation}</td>
                 <th>出生日期</th>
-                <td><fmt:formatDate value="${user.birthDate}" pattern="yyyy-MM-dd"/></td>
+                <td>${user.birthDate}</td>
             </tr>
             <tr>
                 <th>籍贯</th>
@@ -161,7 +162,90 @@
             </tr>
             <tr>
                 <th>入党日期</th>
-                <td><fmt:formatDate value="${user.joinPartyDate}" pattern="yyyy-MM-dd"/></td>
+                <td><${user.joinPartyDate}</td>
+            </tr>
+        </table>
+        <h2>在校信息</h2>
+        <table class="info-table">
+            <tr>
+                <th>年级</th>
+                <td>${user.grade}</td>
+                <th>入学季节</th>
+                <td>${user.entranceSeason}</td>
+                <th>培养层次</th>
+                <td>${user.cultivationLevel}</td>
+            </tr>
+            <tr>
+                <th>学生类别</th>
+                <td>${user.studentCategory}</td>
+                <th>学院</th>
+                <td>${user.college}</td>
+                <th>学制</th>
+                <td>${user.lengthOfSchooling}</td>
+            </tr>
+            <tr>
+                <th>校区</th>
+                <td>${user.campusZone}</td>
+                <th>入学年月</th>
+                <td>${user.entranceDate}</td>
+                <th>管理单位</th>
+                <td>${user.managementDepartment}</td>
+            </tr>
+            <tr>
+                <th>专业</th>
+                <td>${user.major}</td>
+                <th>入学方式</th>
+                <td>${user.entranceMethod}</td>
+                <th>班级</th>
+                <td>${user.studentClass}</td>
+            </tr>
+            <tr>
+                <th>招生专业</th>
+                <td>${user.enrollmentMajor}</td>
+                <th>学习方式</th>
+                <td>${user.studyMethod}</td>
+                <th>学位类型</th>
+                <td>${user.degreeType}</td>
+            </tr>
+            <tr>
+                <th>学位情况</th>
+                <td>${user.degreeStatus}</td>
+                <th>是否留学生</th>
+                <td>${user.isInternationalStudent}</td>
+                <th>学籍状态</th>
+                <td>${user.registrationStatus}</td>
+            </tr>
+            <tr>
+                <th>实际毕业时间</th>
+                <td>${user.actualGraduationDate}</td>
+                <th>是否接受学历教育</th>
+                <td>${user.isFormalEducation}</td>
+                <th>进修性质</th>
+                <td>${user.upgradeNature}</td>
+            </tr>
+            <tr>
+                <th>导师</th>
+                <td>${user.supervisor}</td>
+                <th>是否学科交叉培养</th>
+                <td>${user.isInterdisciplinary}</td>
+                <th>联合培养单位名称</th>
+                <td>${user.jointTrainingUnitName}</td>
+            </tr>
+            <tr>
+                <th>在校标识</th>
+                <td>${user.onCampusIdentifier}</td>
+                <th>学籍异动状态</th>
+                <td>${user.statusChange}</td>
+                <th>联合培养导师</th>
+                <td>${user.jointSupervisor}</td>
+            </tr>
+            <tr>
+                <th>缴费情况</th>
+                <td>${user.paymentStatus}</td>
+                <th>研究方向</th>
+                <td>${user.researchDirection}</td>
+                <th>注册状态</th>
+                <td>${user.registrationState}</td>
             </tr>
         </table>
     </div>
@@ -169,25 +253,203 @@
         <h2>入学信息</h2>
         <table class="info-table">
             <tr>
+                <th>招生年度</th>
+                <td>${user.enrollmentYear}</td>
+                <th>考生编号</th>
+                <td>${user.examID}</td>
+                <th>报考类别</th>
+                <td>${user.examType}</td>
+            </tr>
+            <tr>
+                <th>考生来源</th>
+                <td>${user.source}</td>
+                <th>录取类别</th>
+                <td>${user.admissionCategory}</td>
+                <th>考试方式</th>
+                <td>${user.examMethod}</td>
+            </tr>
+            <tr>
+                <th>是否保送</th>
+                <td>${user.isGuaranteed}</td>
+                <th>保留入学资格年限</th>
+                <td>${user.reservedYears}</td>
+                <th>定向委培单位</th>
+                <td>${user.sponsoringUnit}</td>
+            </tr>
+            <tr>
                 <th>入学日期</th>
-                <td><fmt:formatDate value="${user.entranceDate}" pattern="yyyy-MM-dd"/></td>
+                <td><"${user.entranceDate}/></td>
                 <th>入学方式</th>
                 <td>${user.entranceMethod}</td>
             </tr>
             <!-- 其他入学信息字段 -->
+        </table>
+
+        <h2>入学前学历信息</h2>
+        <table class="info-table">
+            <tr>
+                <th>最后毕业学校</th>
+                <td>${user.lastSchool}</td>
+                <th>最后毕业专业</th>
+                <td>${user.lastMajor}</td>
+                <th>最后毕业学校名称</th>
+                <td>${user.lastSchoolName}</td>
+            </tr>
+            <tr>
+                <th>最后学历名称</th>
+                <td>${user.lastDegree}</td>
+                <th>最后学位单位</th>
+                <td>${user.lastDegreeUnit}</td>
+                <th>最后学历专业名称</th>
+                <td>${user.lastDegreeMajor}</td>
+            </tr>
+            <tr>
+                <th>最后毕业证书编号</th>
+                <td>${user.lastDiplomaID}</td>
+                <th>最后学位</th>
+                <td>${user.lastDegreeTitle}</td>
+                <th>最后毕业时间</th>
+                <td><"${user.lastGraduationDate}"/></td>
+            </tr>
+            <tr>
+                <th>最后学历</th>
+                <td>${user.lastEducation}</td>
+                <th>最后学历学习形式</th>
+                <td>${user.lastEducationForm}</td>
+            </tr>
         </table>
     </div>
     <div id="extended-info" class="content-section">
         <h2>扩展信息</h2>
         <table class="info-table">
             <tr>
-                <th>兴趣爱好</th>
-                <td>${user.hobbies}</td>
-                <th>特长</th>
-                <td>${user.specialties}</td>
+                <th>微信号</th>
+                <td>${user.wxID}</td>
+                <th>QQ</th>
+                <td>${user.qqID}</td>
             </tr>
-            <!-- 其他扩展信息字段 -->
+            <tr>
+                <th>联系电话</th>
+                <td>${user.phone}</td>
+                <th>邮政编码</th>
+                <td>${user.postCode}</td>
+            </tr>
+            <tr>
+                <th>通讯地址</th>
+                <td colspan="3">${user.address}</td>
+            </tr>
+            <tr>
+                <th>现就学习或工作单位</th>
+                <td>${user.studyUnit}</td>
+                <th>单位电话</th>
+                <td>${user.unitPhone}</td>
+            </tr>
+            <tr>
+                <th>现就学习或工作单位地址</th>
+                <td colspan="3">${user.unitAddress}</td>
+            </tr>
+            <tr>
+                <th>紧急联系人</th>
+                <td>${user.emergencyContact}</td>
+                <th>紧急电话</th>
+                <td>${user.emergencyPhone}</td>
+            </tr>
+            <tr>
+                <th>紧急联系人住址</th>
+                <td colspan="3">${user.emergencyAddress}</td>
+            </tr>
+            <tr>
+                <th>宿舍地址</th>
+                <td>${user.dormitoryAddress}</td>
+                <th>宿舍电话</th>
+                <td>${user.dormitoryPhone}</td>
+            </tr>
+            <tr>
+                <th>专业技术职务</th>
+                <td>${user.technicalPosition}</td>
+                <th>行政职务级别</th>
+                <td>${user.administrativePositionLevel}</td>
+            </tr>
+            <tr>
+                <th>家庭地址</th>
+                <td>${user.familyAddress}</td>
+                <th>家庭邮政编码</th>
+                <td>${user.familyPostCode}</td>
+            </tr>
+            <tr>
+                <th>家庭电话</th>
+                <td>${user.familyPhone}</td>
+                <th>家庭联系人</th>
+                <td>${user.familyContact}</td>
+            </tr>
         </table>
+
+
+<%--    <div id="work-experience" class="content-section">--%>
+        <h2>工作经历</h2>
+        <table class="info-table">
+            <thead>
+            <tr>
+                <th>起始日期</th>
+                <th>结束日期</th>
+                <th>所在单位</th>
+                <th>从事工作</th>
+                <th>担任职务</th>
+                <th>证明人</th>
+                <th>备注</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>${user.startTime}</td>
+                <td>${user.endTime}</td>
+                <td>${user.workUnit}</td>
+                <td>${user.workCategory}</td>
+                <td>${user.workPosition}</td>
+                <td>${user.provePerson}</td>
+                <td>${user.notes}</td>
+            </tr>
+            <!-- 可以添加更多的工作经历记录 -->
+            </tbody>
+        </table>
+
+
+<%--    <div id="education-experience" class="content-section">--%>
+        <h2>教育经历</h2>
+        <table class="info-table">
+            <thead>
+            <tr>
+                <th>学校名称</th>
+                <th>起始日期</th>
+                <th>结束日期</th>
+                <th>专业名称</th>
+                <th>专业描述</th>
+                <th>学历</th>
+                <th>学位类型</th>
+                <th>毕业学校地点</th>
+                <th>修学年限</th>
+                <th>是否毕业</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>${user.schoolName}</td>
+                <td>${user.startTime}</td>
+                <td>${user.endTime}</td>
+                <td>${user.major}</td>
+                <td>${user.majorDescription}</td>
+                <td>${user.degree}</td>
+                <td>${user.degreeType}</td>
+                <td>${user.graduatePosition}</td>
+                <td>${user.restTime}</td>
+                <td>${user.isGraduate}</td>
+            </tr>
+            <!-- 可以添加更多的教育经历记录 -->
+            </tbody>
+        </table>
+    </div>
+
+
     </div>
 </div>
 </body>

@@ -7,28 +7,18 @@
     <title>教务管理系统</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to right, #e0f7fa, #80deea);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #e6f2ff; /* 淡蓝色背景 */
             margin: 0;
             padding: 0;
         }
         .header {
-            background-color: rgba(255, 255, 255, 0.9);
-            color: #333;
+            background-color: #007bff;
+            color: #fff;
             padding: 10px 20px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            position: absolute;
-            top: 20px;
-            width: calc(100% - 40px);
-            max-width: 1200px;
         }
         .header img {
             height: 50px;
@@ -36,18 +26,25 @@
         .header #xtmc {
             font-size: 24px;
             margin-left: 10px;
-            font-weight: bold;
         }
         .container {
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            padding: 40px;
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 80px);
+            flex-wrap: wrap;
+            padding: 20px;
         }
-        .container h2 {
+        .login-container {
+            width: 400px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin: 10px;
+        }
+        .login-container h2 {
+            text-align: center;
             margin-bottom: 20px;
             color: #333;
         }
@@ -60,23 +57,22 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             box-sizing: border-box;
-            font-size: 16px;
-            transition: all 0.3s ease;
+            font-size: 14px;
         }
         .login-form input[type="text"]:focus,
         .login-form input[type="password"]:focus {
-            border-color: #80deea;
-            box-shadow: 0 0 8px rgba(128, 222, 234, 0.2);
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
         }
         .login-form input[type="submit"] {
-            background-color: #80deea;
+            background-color: #007bff;
             border: none;
             color: #fff;
             cursor: pointer;
             transition: background-color 0.3s;
         }
         .login-form input[type="submit"]:hover {
-            background-color: #4dd0e1;
+            background-color: #0056b3;
         }
         .error-message {
             color: red;
@@ -84,7 +80,9 @@
             text-align: center;
         }
         .login-image {
-            margin-bottom: 20px;
+            flex: 1;
+            text-align: center;
+            margin: 10px;
         }
         .login-image img {
             max-width: 100%;
@@ -98,29 +96,33 @@
     String imageUrl = "/IMG/pic1.jpg"; // 设置图片的URL
 %>
 <div class="header">
-    <img src="/IMG/logo_jw_d.png" alt="学校Logo">
-    <span id="xtmc">浙江工业大学正方教务管理系统</span>
+    <div class="logo_1">
+        <img src="/IMG/logo_jw_d.png" alt="学校Logo">
+        <span id="xtmc">浙江工业大学正方教务管理系统</span>
+    </div>
 </div>
 <div class="container">
     <div class="login-image">
         <img src="<%=imageUrl%>" alt="登录图片">
     </div>
-    <h2>教务管理系统</h2>
-    <form class="login-form" action="<%=request.getContextPath()%>/loginChangeServlet" method="post">
-        <input type="hidden" name="token" value="<%=new Date().getTime()%>"/>
-        <input type="text" name="username" placeholder="请输入账号" required />
-        <input type="password" name="password" placeholder="请输入密码" required/>
-        <input type="submit" name="submit" value="登录" />
-    </form>
-    <div class="error-message">
-        <%
-            // 如果有错误消息，显示错误消息
-            String message = (String) session.getAttribute("message");
-            if (message != null) {
-                out.print(message);
-                session.removeAttribute("message");
-            }
-        %>
+    <div class="login-container">
+        <h2>教务管理系统</h2>
+        <form class="login-form" action="<%=request.getContextPath()%>/loginChangeServlet" method="post">
+            <input type="hidden" name="token" value="<%=new Date().getTime()%>"/>
+            <input type="text" name="username" placeholder="请输入账号" required />
+            <input type="password" name="password" placeholder="请输入密码" required/>
+            <input type="submit" name="submit" value="登录" />
+        </form>
+        <div class="error-message">
+            <%
+                // 如果有错误消息，显示错误消息
+                String message = (String) session.getAttribute("message");
+                if (message != null) {
+                    out.print(message);
+                    session.removeAttribute("message");
+                }
+            %>
+        </div>
     </div>
 </div>
 </body>

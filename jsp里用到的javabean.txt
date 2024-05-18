@@ -1,0 +1,139 @@
+import java.util.Date;
+
+public class User {
+    // 基础信息
+    private String studentID;
+    private String name;
+    private String namePY;
+    private String gender;
+    private String nation;
+    private Date birthDate;
+    private String nativePlace;
+    private String politicalStatus;
+    private String IDNumber;
+    private String IDType;
+    private String maritalStatus;
+    private String birthPlace;
+    private String familyAddress;
+    private String huKouDetailedPlace;
+    private String railwayStationStart;
+    private String huKouPlace;
+    private String huKouPostalCode;
+    private String railwayStationEnd;
+    private String campusEmail;
+    private String personalEmail;
+    private String phoneNumber;
+    private Date joinPartyDate;
+
+    // 在校信息
+    private String grade;
+    private String entranceSeason;
+    private String cultivationLevel;
+    private String studentCategory;
+    private String college;
+    private String lengthOfSchooling;
+    private String campusZone;
+    private Date entranceDate;
+    private String managementDepartment;
+    private String major;
+    private String entranceMethod;
+    private String studentClass;
+    private String enrollmentMajor;
+    private String studyMethod;
+    private String degreeType;
+    private String degreeStatus;
+    private boolean isInternationalStudent;
+    private String registrationStatus;
+    private Date actualGraduationDate;
+    private boolean isFormalEducation;
+    private String upgradeNature;
+    private String supervisor;
+    private boolean isInterdisciplinary;
+    private String jointTrainingUnitName;
+    private String onCampusIdentifier;
+    private String statusChange;
+    private String jointSupervisor;
+    private String paymentStatus;
+    private String researchDirection;
+    private String registrationState;
+
+    // 入学信息
+    private String enrollmentYear;
+    private String examID;
+    private String examType;
+    private String source;
+    private String admissionCategory;
+    private String examMethod;
+    private boolean isGuaranteed;
+    private int reservedYears;
+    private String sponsoringUnit;
+    private Date entranceDate;
+    private String entranceMethod;
+
+    // 入学前学历信息
+    private String lastSchool;
+    private String lastMajor;
+    private String lastSchoolName;
+    private String lastDegree;
+    private String lastDegreeUnit;
+    private String lastDegreeMajor;
+    private String lastDiplomaID;
+    private String lastDegreeTitle;
+    private Date lastGraduationDate;
+    private String lastEducation;
+    private String lastEducationForm;
+
+    // 扩展信息
+    private String wxID;
+    private String qqID;
+    private String phone;
+    private String postCode;
+    private String address;
+    private String studyUnit;
+    private String unitPhone;
+    private String unitAddress;
+    private String emergencyContact;
+    private String emergencyPhone;
+    private String emergencyAddress;
+    private String dormitoryAddress;
+    private String dormitoryPhone;
+    private String technicalPosition;
+    private String administrativePositionLevel;
+    private String familyAddress;
+    private String familyPostCode;
+    private String familyPhone;
+    private String familyContact;
+
+    // 工作经历
+    private Date startTime;
+    private Date endTime;
+    private String workUnit;
+    private String workCategory;
+    private String workPosition;
+    private String provePerson;
+    private String notes;
+
+    // 教育经历
+    private String schoolName;
+    private Date startTime;
+    private Date endTime;
+    private String major;
+    private String majorDescription;
+    private String degree;
+    private String degreeType;
+    private String graduatePosition;
+    private int restTime;
+    private boolean isGraduate;
+
+    // Getter和Setter方法
+    // 这里需要为每个属性添加对应的getter和setter方法，例如：
+    public String getStudentID() {
+        return studentID;
+    }
+
+    public void setStudentID(String studentID) {
+        this.studentID = studentID;
+    }
+
+    // 其余的getter和setter方法需要根据每个属性添加
+}
